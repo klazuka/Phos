@@ -185,7 +185,7 @@ An.object().named('Block').from(Widget,{
 			return ![ $self, Display, Phosphor ].contains(v) 
 				&& v.can('on') && v.on($self) && v.editing }))) {
 			if (o.childof && !o.valueof) {
-				o.childof[o.content.deparameterized()] = o.childof == localStorage ? this.content : this.evaluate();
+				o.childof[o.content.deparameterized()] = this.evaluate();
 				this.free();
 			} 
 			if (!o.childof) {
