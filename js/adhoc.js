@@ -213,11 +213,11 @@ Object.prototype.request = function(method,url,cb,data) {
 		if (this.status == 200) cb(this.responseText);
 	};
 	_request.open(method,url,true);
-	_request.setRequestHeader('Content-Type','appliaction/x-www-from-urlencoded');
+	_request.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
 	_request.send(data ? data : '');
 	return this;
 }
-Object.prototype.post = function(url,cb) { return this.request("POST",url,this.toString(),cb) }
+Object.prototype.post = function(url,cb) { return this.request("POST",url,cb,this.toString()) }
 Object.prototype.get = function(url,cb) { return this.request("GET",url,cb) }
 
 Object.prototype.download = function() {
