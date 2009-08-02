@@ -156,9 +156,9 @@ An.object().named('Display').from(Widget, {
 	canvas: null,
 	scroll: function(e) { this.to(e.dx,e.dy) }, // Override this if you don't want the canvas to scroll
 	draw: function() { 
-		Screen.background(0,0,0) 
-		Screen.as(this.extent).white().frame();
-	}, // Override to change the background
+		Screen.background(0,0,0) // Override to change the background
+		if (this.extent) Screen.as(this.extent).white().frame();
+	},
 	create: function() {
 		this.canvas = $_('canvas');
 		this.canvas.id = 'canvas';
