@@ -50,11 +50,11 @@ var clipboard;		// the last object we cut or copied
 // Widget extensions
 
 Widget.down = function(e) { 
-	if(!e.on(this)) return;
-       	that = this; 
-	this.moving = e; 
+	if (!e.on(this)) return;
+	that = this;
+	this.moving = e;
 	if (Keyboard.shift) that.init().to(that.w,that.h);
-       	if(e.button < 2) return;
+	if (e.button < 2) return;
 	this.contents = this.contents ? this.contents.collapse() : Block.display(this,this.x,this.y+this.h) 
 };
 Widget.move = function(e) {
