@@ -399,6 +399,10 @@ An.object().named('Mouse').from(Device, {
 		_root.listen('mouseover',Mouse.over).listen('mousemove',Mouse.move).listen('mousedown',Mouse.down).listen('mouseup',Mouse.up).listen('mousewheel',Mouse.scroll).listen('onscroll',Mouse.scroll);
 		return this;
 	},
+	dispatch: function(n,e) {
+		if (Keyboard.ctrl) e = e.clone().copy({button: 2}); // MacBook trackpads require Ctrl key to "right-click"
+		return Device.dispatch(n, e);
+	},
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
