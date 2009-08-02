@@ -209,7 +209,6 @@ An.object().named('Screen').from(Box,{
 	family: 'Arial',
 	colorizer: false,
 	init: function() { this.ctx = Display.canvas.getContext('2d'); return this },
-	as: function(w) { return this.at(w.x,w.y).by(w.w,w.h) },
 	to: function(x,y) { return this.at(this.x+x,this.y+y) },
 	at: function(x,y) {
 		this.x = x - Display.x;
