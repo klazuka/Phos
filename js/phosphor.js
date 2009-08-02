@@ -77,8 +77,8 @@ Widget.up = function(e) {
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-// Names Object
-An.object().named('Names').from({ of: function(k) { return k.can('name') ? k.name() : undefined }});
+// Name Object
+An.object().named('Name').from({ of: function(k) { return k && k.can('name') ? k.name() : undefined }});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // Hotkey Object
@@ -135,7 +135,7 @@ An.object().named('Block').from(Widget,{
 					this.done():
 					this.content.substring(0,this.content.length-1):
 			this.content.append(e.key);
-		if (this.content && Names.of(this.content)) this.content = Names.of(this.content);
+		if (Name.of(this.content)) this.content = Name.of(this.content);
 		if (this.content == undefined) this.free();
 	},
 	done: function() {
