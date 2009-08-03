@@ -284,3 +284,46 @@ function $(x) { return document.getElementById(x) }
 function $_(x) { return document.createElement(x) }
 document.goto = function(x) { document.location.href = x }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// The following functions were added by Keith Lazuka.
+function keys(o) { var retval = []; o.each(function (v,k) { retval.push(k) }); return retval; }
+
+function facets(o) {
+	var retval = {};
+	var seen = [];
+	Objects.each(function(v,k) {
+		if (o.is(v) && !seen.contains(v) && v!==Objects && k!=='init') {
+			seen.push(v);
+			retval[k] = keys(v);
+		}
+	});
+	return retval;
+}
+
+// copied from http://javascript.crockford.com/remedial.html
+function typeOf(value) {
+    var s = typeof value;
+    if (s === 'object') {
+        if (value) {
+            if (value instanceof Array) s = 'array';
+        } else {
+            s = 'null';
+        }
+    }
+    return s;
+}
+
+function pprint(o, n) {
+	var indent = " ".repeat(n);
+	typeOf(o) == 'string' ?
+		console.log(indent + o):
+	typeOf(o) == 'array' ?
+		o.every(function (v,i) { console.log(indent + v) }):
+	o.each(function (v,k) {	console.log(indent + k); pprint(v, n+4)});
+}
+
+String.prototype.repeat = function(n) {
+	var retval = "";
+	for (var i = 0; i < n; i++) retval += this;
+	return retval;
+}
